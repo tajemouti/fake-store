@@ -17,11 +17,14 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     add(state, action) {
-      state.push(action.payload);
+      const newState = [...state, action.payload];
+      saveState(newState);
+      return newState;
     },
-
     remove(state, action) {
-      return state.filter((item) => item.id !== action.payload);
+      const newState = state.filter((item) => item.id !== action.payload);
+      saveState(newState);
+      return newState;
     },
   },
 });
