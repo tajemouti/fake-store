@@ -5,6 +5,11 @@ const loadState = () => {
   return serializedState ? JSON.parse(serializedState) : [];
 };
 
+const saveState = (state) => {
+  const serializedState = JSON.stringify(state);
+  localStorage.setItem('cart', serializedState);
+};
+
 const initialState = loadState();
 
 const cartSlice = createSlice({
