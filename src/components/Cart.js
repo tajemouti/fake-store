@@ -1,17 +1,17 @@
 import React from 'react';
 import { Button, Card } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { remove } from '../features/cartSlice';
+import { decrement } from '../features/cartSlice';
 
 const Cart = () => {
   const products = useSelector((state) => state.cart);
   const dispatch = useDispatch();
 
-  const removeFromCart = (id) => {
-    dispatch(remove(id));
+  const decrementQuantity = (id) => {
+    dispatch(decrement(id));
   };
 
-  const cards = products.map((product) => [
+  const cards = products.map((product) => (
     <div key={product.id} className="col-md-12" style={{ marginBottom: '10px' }}>
       <Card className="h-100">
         <div className="text-center">
@@ -20,15 +20,19 @@ const Cart = () => {
         <Card.Body>
           <Card.Title>{product.title}</Card.Title>
           <Card.Text>
+            Price:
             {product.price}
+            <br />
+            Quantity:
+            {product.quantity}
           </Card.Text>
         </Card.Body>
         <Card.Footer style={{ background: 'white' }}>
-          <Button variant="danger" onClick={() => removeFromCart(product.id)}>Remove</Button>
+          <Button variant="danger" onClick={() => decrementQuantity(product.id)}>Remove</Button>
         </Card.Footer>
       </Card>
-    </div>,
-  ]);
+    </div>
+  ));
 
   return (
     <div className="row">
