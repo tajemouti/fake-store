@@ -4,7 +4,9 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 const NavBar = () => {
-  const count = useSelector((state) => state.cart.length);
+  const count = useSelector(
+    (state) => state.cart.reduce((total, item) => total + item.quantity, 0),
+  );
 
   return (
     <Navbar expand="lg" className="bg-body-tertiary">
