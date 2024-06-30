@@ -1,10 +1,8 @@
-import React from 'react'
-import Product from './Product'
+import React from 'react';
+import Product from './Product';
 
-const Dashboard = () => {
-  return (
-    <Product />
-  )
-}
+const Dashboard = () => (
+  <Product />
+);
 
-export default Dashboard
+export default Dashboard;

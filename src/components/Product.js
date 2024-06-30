@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from 'react';
 import { Alert, Button, Card } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { add } from '../features/cartSlice';
@@ -7,8 +7,8 @@ import { getProducts } from '../features/productSlice';
 const Product = () => {
   const dispatch = useDispatch();
 
-  const products = useSelector(state => state.products.data);
-  const status = useSelector(state => state.products.status);
+  const products = useSelector((state) => state.products.data);
+  const status = useSelector((state) => state.products.status);
 
   useEffect(() => {
     dispatch(getProducts());
@@ -16,22 +16,24 @@ const Product = () => {
 
   const addToCart = (product) => {
     dispatch(add(product));
-  }
+  };
 
   if (status === 'loading') {
-    return <div>loading...</div>
+    return <div>loading...</div>;
   }
 
   if (status === 'error') {
-    return <Alert key='danger' variant='danger'>
-      Something went wrong!! Try again later
-    </Alert>
+    return (
+      <Alert key="danger" variant="danger">
+        Something went wrong!! Try again later
+      </Alert>
+    );
   }
 
-  const cards = products.map(product => [
+  const cards = products.map((product) => [
     <div key={product.id} className="col-md-3" style={{ marginBottom: '10px' }}>
       <Card className="h-100">
-        <div className='text-center'>
+        <div className="text-center">
           <Card.Img variant="top" src={product.image} style={{ width: '100px', height: '130px' }} />
         </div>
         <Card.Body>
@@ -41,11 +43,11 @@ const Product = () => {
           </Card.Text>
         </Card.Body>
         <Card.Footer style={{ background: 'white' }}>
-          <Button variant="primary" onClick={() => { addToCart(product) }}>Add To Cart</Button>
+          <Button variant="primary" onClick={() => { addToCart(product); }}>Add To Cart</Button>
         </Card.Footer>
       </Card>
-    </div>
-  ])
+    </div>,
+  ]);
 
   return (
     <>
@@ -54,7 +56,7 @@ const Product = () => {
         {cards}
       </div>
     </>
-  )
-}
+  );
+};
 
-export default Product
+export default Product;
