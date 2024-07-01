@@ -2,6 +2,7 @@ import React from 'react';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import cart from '../assets/cart_icon.png';
 
 const NavBar = () => {
   const count = useSelector(
@@ -19,7 +20,8 @@ const NavBar = () => {
         <Navbar.Collapse className="justify-content-end">
           <Navbar.Text>
             <Nav.Link to="/cart" as={Link}>
-              My bag
+              <img src={cart} alt="cart icon" />
+              {' '}
               {count}
             </Nav.Link>
           </Navbar.Text>
