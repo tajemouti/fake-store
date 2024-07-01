@@ -34,7 +34,7 @@ const Product = () => {
   const cards = products.map((product) => (
     <div key={product.id} className="col-md-3" style={{ marginBottom: '10px' }}>
       <Card className="h-100">
-        <Link to={`/product/${product.id}`} className="stretched-link">
+        <Link to={`/product/${product.id}`}>
           <div className="text-center">
             <Card.Img variant="top" src={product.image} style={{ width: '100px', height: '130px' }} />
           </div>
